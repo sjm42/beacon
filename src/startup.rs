@@ -1,5 +1,6 @@
 // startup.rs
 
+use env_logger::{Builder, Target};
 use log::*;
 use std::env;
 use structopt::StructOpt;
@@ -17,7 +18,8 @@ impl OptsCommon {
         Ok(())
     }
     pub fn start_pgm(&self, name: &str) {
-        env_logger::Builder::new()
+        Builder::new()
+            .target(Target::Stdout)
             .filter_module(env!("CARGO_PKG_NAME"), LevelFilter::Info)
             .filter_module(name, LevelFilter::Info)
             .format_timestamp_secs()

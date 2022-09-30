@@ -1,7 +1,10 @@
 // main.rs
 
 use log::*;
-use std::{thread, time};
+use std::{
+    io::{self, Write},
+    thread, time,
+};
 use structopt::StructOpt;
 
 use beacon::*;
@@ -15,6 +18,7 @@ fn main() -> anyhow::Result<()> {
     let m = &opts.message;
     loop {
         info!("{m}");
+        io::stdout().flush()?;
         thread::sleep(time::Duration::new(opts.interval, 0));
     }
 }
