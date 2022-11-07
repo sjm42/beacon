@@ -17,7 +17,11 @@ fn main() -> anyhow::Result<()> {
 
     let m = &opts.message;
     loop {
-        info!("{m}");
+        if opts.timestamp {
+            info!("{m}");
+        } else {
+            write!(io::stdout(), "{m}\n")?;
+        }
         io::stdout().flush()?;
         thread::sleep(time::Duration::new(opts.interval, 0));
     }
