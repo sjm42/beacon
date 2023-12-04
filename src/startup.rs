@@ -1,17 +1,17 @@
 // startup.rs
 
+use clap::Parser;
 use env_logger::{Builder, Target};
 use log::*;
 use std::env;
-use structopt::StructOpt;
 
-#[derive(Clone, Debug, Default, StructOpt)]
+#[derive(Clone, Debug, Default, Parser)]
 pub struct OptsCommon {
-    #[structopt(long, short)]
+    #[arg(long, short)]
     pub timestamp: bool,
-    #[structopt(long, short, default_value = "ping")]
+    #[arg(long, short, default_value = "ping")]
     pub message: String,
-    #[structopt(long, short, default_value = "60")]
+    #[arg(long, short, default_value = "60")]
     pub interval: u64,
 }
 

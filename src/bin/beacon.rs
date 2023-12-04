@@ -1,16 +1,16 @@
 // main.rs
 
+use clap::Parser;
 use log::*;
 use std::{
     io::{self, Write},
     thread, time,
 };
-use structopt::StructOpt;
 
 use beacon::*;
 
 fn main() -> anyhow::Result<()> {
-    let mut opts = OptsCommon::from_args();
+    let mut opts = OptsCommon::parse();
     opts.finish()?;
     opts.start_pgm(env!("CARGO_BIN_NAME"));
     debug!("Runtime config:\n{opts:#?}");
@@ -20,7 +20,7 @@ fn main() -> anyhow::Result<()> {
         if opts.timestamp {
             info!("{m}");
         } else {
-            write!(io::stdout(), "{m}\n")?;
+            writeln!(io::stdout(), "{m}")?;
         }
         io::stdout().flush()?;
         thread::sleep(time::Duration::new(opts.interval, 0));
