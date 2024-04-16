@@ -1,11 +1,11 @@
 // main.rs
 
-use clap::Parser;
-use log::*;
 use std::{
     io::{self, Write},
     thread, time,
 };
+
+use clap::Parser;
 
 use beacon::*;
 
@@ -26,5 +26,4 @@ fn main() -> anyhow::Result<()> {
         thread::sleep(time::Duration::new(opts.interval, 0));
     }
 }
-
 // EOF
