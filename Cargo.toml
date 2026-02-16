@@ -2,10 +2,10 @@
 
 [package]
 authors = ["Sami J. Mäkinen <sjm@iki.fi>"]
-edition = "2021"
+edition = "2024"
 readme = "README.md"
 name = "beacon"
-version = "1.0.0"
+version = "1.1.0"
 
 
 [dependencies]
